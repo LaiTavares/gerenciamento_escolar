@@ -37,5 +37,28 @@ class UsuarioController extends Controller
 
         return redirect("/");
     }
+
+    public function edit($id){
+        $usuario = Usuario::findOrFail($id);
+        $niveis = Nivel::all();
+        return view("form", compact("usuario", "niveis"));
+    }
+
+    public function update(Request $request, $id){
+        //$dados = $request->all();
+        $usuario = Usuario::findOrFail($id);
+        //$usuario->update($dados);
+
+        $usuario->update([
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'data_nascimento' => $request->data_nascimento,
+            'nivel_id' => $request->nivel_id
+        ]);
+        return redirect('/');
+
+    }
+
+
 }
 

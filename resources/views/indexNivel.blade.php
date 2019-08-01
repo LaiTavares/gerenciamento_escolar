@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<table border=1>
+
+<tr>
+    <th>Nome </th>
+    <th>Ação</th>
+</tr>
+
+
+    @foreach($niveis as $nivel)
+    <tr>
+        <td>{{$nivel->nome}}</td>
+        <th><button><a href="{{url('/nivel/'.$nivel->id.'/edit') }}">Editar </a> </button> </th>
+
+    </tr>
+    @endforeach
+
+</table>
+<button> <a href="{{url('/nivel/form')}} "> Novo Cadastro </a></button>
+</body>
+</html>

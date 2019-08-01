@@ -13,10 +13,23 @@
 
 //GET: used to return data
 
+//User's Routes
 Route::get("/", "UsuarioController@index");
-// Route::get("/soma/{a}/{b}", "UsuarioController@soma");
 Route::get("/form", "UsuarioController@create");
 Route::post("/", "UsuarioController@store");
+Route::get("/{id}/edit", "UsuarioController@edit");
+Route::put("/{id}", "UsuarioController@update");
+
+// Nivel's Routes
+Route::get("/nivel", "NivelController@index");
+Route::get("/nivel/form", "NivelController@create");
+Route::post("/nivel", "NivelController@store");
+Route::get("/nivel/{id}/edit", "NivelController@edit");
+Route::put("/nivel/{id}", "NivelController@update");
+
+
+
+// Route::get("/soma/{a}/{b}", "UsuarioController@soma");
 
 //POST: used to send data
 

@@ -7,13 +7,14 @@
     <title>Titulo</title>
 </head>
 <body>
-<table>
+<table border=1>
 
     <tr>
         <th>Nome: </th>
         <th>Email: </th>
         <th>Data Nascimento: </th>
         <th>Nivel: </th>
+        <th>Ação</th>
     </tr>
 
     @foreach($usuarios as $usuario)
@@ -23,8 +24,11 @@
             <td>{{$usuario->email}}</td>
             <td>{{$usuario->data_nascimento}}</td>
             <td>{{$usuario->nivel->nome}}</td>
+            <th><button><a href="{{url('/'.$usuario->id.'/edit') }}">Editar </a> </button> </th>
         </tr>
     @endforeach
     </table>
+    <button> <a href="{{url('/form')}} "> Novo Cadastro </a></button>
+
 </body>
 </html>
