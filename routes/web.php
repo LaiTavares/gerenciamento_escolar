@@ -19,6 +19,8 @@ Route::get("/form", "UsuarioController@create");
 Route::post("/", "UsuarioController@store");
 Route::get("/{id}/edit", "UsuarioController@edit");
 Route::put("/{id}", "UsuarioController@update");
+Route::delete("/{id}", "UsuarioController@destroy");
+Route::put("/restore/{id}", "UsuarioController@restore");
 
 // Nivel's Routes
 Route::get("/nivel", "NivelController@index");

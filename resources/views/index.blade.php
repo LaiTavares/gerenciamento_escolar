@@ -7,8 +7,8 @@
     <title>Titulo</title>
 </head>
 <body>
+<h2>Usuarios ativos</h2>
 <table border=1>
-
     <tr>
         <th>Nome: </th>
         <th>Email: </th>
@@ -18,17 +18,49 @@
     </tr>
 
     @foreach($usuarios as $usuario)
-
         <tr>
             <td>{{$usuario->nome}}</td>
             <td>{{$usuario->email}}</td>
             <td>{{$usuario->data_nascimento}}</td>
             <td>{{$usuario->nivel->nome}}</td>
             <th><button><a href="{{url('/'.$usuario->id.'/edit') }}">Editar </a> </button> </th>
+            <td>
+                <form method="POST" action="{{url($usuario->id)}}">
+                    @method('delete')
+                    @csrf
+                    <button type="submit">Deletar</button>
+                </form>
+            </td>
         </tr>
     @endforeach
     </table>
     <button> <a href="{{url('/form')}} "> Novo Cadastro </a></button>
+    <h2>Usuarios deletados</h2>
+    <table border=1>
+    <tr>
+        <th>Nome: </th>
+        <th>Email: </th>
+        <th>Data Nascimento: </th>
+        <th>Nivel: </th>
+        <th>Ação</th>
+    </tr>
+    @foreach($usuariosDeletados as $usuario)
+        <tr>
+            <td>{{$usuario->nome}}</td>
+            <td>{{$usuario->email}}</td>
+            <td>{{$usuario->data_nascimento}}</td>
+            <td>{{$usuario->nivel->nome}}</td>
+            <th><button><a href="{{url('/'.$usuario->id.'/edit') }}">Editar </a> </button> </th>
+            <td>
+                <form method="POST" action="{{url('/restore/'.$usuario->id)}}">
+                    @method('put')
+                    @csrf
+                    <button type="submit">Des-deletar</button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
+    </table>
 
 </body>
 </html>

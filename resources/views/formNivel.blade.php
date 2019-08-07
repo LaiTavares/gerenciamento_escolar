@@ -14,9 +14,12 @@
             @method("PUT")
         @endif
 
+        
+
         @csrf
         <label for="">Nome do Nível: </label>
-        <input value="{{isset($nivel) ? $nivel->nome : '' }}" type="text" name="nome">
+        <input value="{{isset($nivel) ? $nivel->nome : '' }}" type="text" name="nome">        
+        <br>{{$errors->first("nome")}}
         <input type="submit" value="enviar">
     </form>
 
