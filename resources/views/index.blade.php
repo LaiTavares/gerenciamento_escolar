@@ -8,13 +8,24 @@
 </head>
 <body>
 <h2>Usuarios ativos</h2>
+<div class="errors">
+                @if(Session::has('success'))
+                    <p>{{Session::get('success')}}</p>
+                @endif
+
+                @if(Session::has('error'))
+                    <p>{{Session::get('error')}}</p>
+                @endif
+            </div>
 <table border=1>
     <tr>
         <th>Nome: </th>
         <th>Email: </th>
         <th>Data Nascimento: </th>
         <th>Nivel: </th>
-        <th>Ação</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+
     </tr>
 
     @foreach($usuarios as $usuario)
@@ -42,7 +53,8 @@
         <th>Email: </th>
         <th>Data Nascimento: </th>
         <th>Nivel: </th>
-        <th>Ação</th>
+        <th>Editar</th>
+        <th>Deletar</th>
     </tr>
     @foreach($usuariosDeletados as $usuario)
         <tr>

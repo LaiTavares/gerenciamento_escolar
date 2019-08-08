@@ -16,4 +16,7 @@ class Usuario extends Model
     public function nivel(){
         return $this->belongsTo("App\Nivel"); //belongsTo in the model that has foreign key
     }
+    public function materias(){
+        return $this->belongsToMany('App\Materia', 'usuario_materia'); // ->withPivot('carga_horaria');
+    }
 }
